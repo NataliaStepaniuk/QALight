@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Layout from './Layout';
+import Header from './Header'; 
+import PostTitle from './PostTitle';
+import PostMain from './PostMain';
+import PostContext from '../context/PostContext';
 
 const Post = () => {
   const [post, setPost] = useState({});
@@ -11,7 +16,7 @@ const Post = () => {
   };
 
   const likeThis = () => {
-    setLikes(likes + 1);
+    setLikes(prevLikes => prevLikes + 1);
   };
 
   useEffect(() => {
@@ -27,18 +32,16 @@ const Post = () => {
   }, [likes]);
 
   return (
-    <article className='post'>
-      <div className='cover-container'>
-        <img src={post.cover} alt={post.title} />
-      </div>
-      <div className='post-footer'>
-        <h3>{post.title} {post.id}</h3>
-        <p>{post.content}</p>
-        <button id='like'>
+    <PostContext.Provider value={post}>
+      <Layout>
+        <Header />
+        <PostTitle title={post.title} />
+        <PostMain content={post.content} />
+        <button id='like' onClick={likeThis}>
           Like this post <strong>{likes}</strong>
         </button>
-      </div>
-    </article>
+      </Layout>
+    </PostContext.Provider>
   );
 };
 
