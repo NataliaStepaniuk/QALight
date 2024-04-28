@@ -1,19 +1,22 @@
-import React from "react";
+import React from 'react'
+import Layout from './Layout'
+import Header from './Header'
+import BlogInfo from './BlogInfo'
+import BlogContext from '../context/BlogContext'
 
-const Blog = ({ post }) => {
+const Blog = () => {
+    const blogName = "Назва вашого блогу";
+
   return (
-    <article className="post">
-      <div className="cover-container">
-        <img src={post.cover} alt={post.title} />
-      </div>
-      <div className="post-footer">
-        <h3>
-          {post.title} {post.id}
-        </h3>
-        <p>{post.content}</p>
-      </div>
-    </article>
-  );
-};
+    <BlogContext.Provider value={blogName}>
+      <Layout>
+        <Header />
+        <div className="p-4 text-white">
+          <BlogInfo />
+        </div>
+      </Layout>
+    </BlogContext.Provider>
+  )
+}
 
-export default Blog;
+export default Blog
