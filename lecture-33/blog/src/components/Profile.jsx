@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Profile = () => {
-    return (
-        <img
-          src="https://i.imgur.com/QIrZWGIs.jpg"
-          alt="Alan L. Hart"
-        />
-      );
+function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+    />
+  );
 }
 
-export default Profile
+export default Profile;

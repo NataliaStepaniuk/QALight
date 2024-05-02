@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header'; 
 import Layout from './Layout';
+import PostContext from '../context/PostContext';
 import PostTitle from './PostTitle';
 import PostMain from './PostMain';
-import PostContext from '../context/PostContext';
 
 const Post = ({post}) => {
   const [likes, setLikes] = useState(0);
@@ -13,17 +12,23 @@ const Post = ({post}) => {
   };
 
   if (!post) {
-    return null; // or return a loading spinner or some other placeholder
+    return null; 
   }
 
   return (
     <PostContext.Provider value={post}>
       <Layout>
-        <PostTitle title={post.title} />
+        <div className='mt-4 w-2/3 mx-auto'>
+        <div className='border-b-2 border-gray-200 pb-2'>
+          <h1 className='text-3xl font-bold'>{post.title}</h1>
+          <p className='text-sm text-gray-500'>{post.date}</p>
+       <PostTitle title={post.title} />
+        </div> 
         <PostMain content={post.content} />
         <button className='mt-4' id='like' onClick={likeThis}>
           Like this post <strong>{likes}</strong>
         </button>
+        </div>
       </Layout>
     </PostContext.Provider>
   );

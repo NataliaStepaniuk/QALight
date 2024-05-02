@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const PostTitle = ({title}) => {
+const PostTitle = () => {
   return (
-    <div className="font-bold">{title}</div>
-  )
-}
+    <div className="postTitle">
+     
+    </div>
+  );
+};
 
-export default PostTitle
+export default PostTitle;

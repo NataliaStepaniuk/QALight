@@ -1,27 +1,33 @@
 import './App.css'
+
 import Footer from './components/Footer';
-import Profile from './components/Profile';
 import Navbar from './components/Navbar';
 import Gallery from './components/Gallery';
 import Blog from './components/Blog';
-import Post from './components/Post';
+import Posts from './components/Posts';
+import AboutPage from './components/About';
+import ContactPage from './components/Contact';
+import Chat from './components/Chat';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
-  // let post = {
-  //   id: 1,
-  //   title: "Programming Algorithm",
-  //   content: `The word Algorithm means “a process or set of rules to be followed in calculations or other problem-solving operations”. Therefore Algorithm refers to a set of rules/instructions that step-by-step define how a work is to be executed upon in order to get the expected results.`,
-  //   cover: "/vite.svg",
-  //   likes: 5,
-  // };
 
   return (
     <>
-      <Navbar />
-      <Gallery />
-      <Blog/>
-      <Post />
-      <Footer />
+      
+      <BrowserRouter>
+        <Navbar />
+        <Gallery />
+        <Routes>
+          <Route path="/" element={<Blog />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   )
 }
